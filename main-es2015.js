@@ -66,8 +66,8 @@ class AppComponent {
         const limit = "1";
         const params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]()
             .set('limit', limit);
-        this.http.get("api/user", { params: params }).subscribe((data) => {
-            alert(data);
+        this.http.get("api/user", { params: {} }).subscribe((data) => {
+            console.log(JSON.stringify(data));
             console.log(data);
         });
     }

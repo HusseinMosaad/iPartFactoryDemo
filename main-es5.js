@@ -123,9 +123,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var limit = "1";
           var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('limit', limit);
           this.http.get("api/user", {
-            params: params
+            params: {}
           }).subscribe(function (data) {
-            alert(data);
+            console.log(JSON.stringify(data));
             console.log(data);
           });
         }
