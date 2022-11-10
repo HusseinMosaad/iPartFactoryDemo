@@ -109,6 +109,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.settings.GetSettings().subscribe(function (data) {
             _this.data = data.Data;
           });
+          this.example();
         } // Without CommonService
 
       }, {

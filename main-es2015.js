@@ -54,6 +54,7 @@ class AppComponent {
         this.settings.GetSettings().subscribe((data) => {
             this.data = data.Data;
         });
+        this.example();
     }
     // Without CommonService
     example() {
