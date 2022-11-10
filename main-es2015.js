@@ -50,7 +50,7 @@ class AppComponent {
         this.settings = settings;
         this.http = http;
         this.context = context;
-        this.title = ' Hussein Calling API Party!';
+        this.title = ' Hussein Calling Server!';
         this.loggedInPartyId = "";
         this.loggedInPartyId = context.loggedInPartyId;
         console.log(context.loggedInPartyId);
