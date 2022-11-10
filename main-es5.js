@@ -126,7 +126,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "getDataFromBackend",
         value: function getDataFromBackend() {
           // const ck = (document.querySelector("#x-contentKey") as HTMLInputElement).value;
-          // const cik = (document.querySelector("#x-contentItemKey") as HTMLInputElement).value;    
+          // const cik = (document.querySelector("#x-contentItemKey") as HTMLInputElement).value;
           // const params = new HttpParams()
           // .set('contentKey', ck)
           // .set('contentItemKey',cik);
@@ -146,7 +146,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function getLoggedInUserInfo() {
           var url = "api/party/".concat(this.loggedInPartyId);
           console.log(url);
-          this.httpClient.get(url, {
+          this.http.get(url, {
             params: {}
           }).subscribe(function (data) {
             console.log(data);

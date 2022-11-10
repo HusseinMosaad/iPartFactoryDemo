@@ -65,7 +65,7 @@ class AppComponent {
     // Without CommonService
     getDataFromBackend() {
         // const ck = (document.querySelector("#x-contentKey") as HTMLInputElement).value;
-        // const cik = (document.querySelector("#x-contentItemKey") as HTMLInputElement).value;    
+        // const cik = (document.querySelector("#x-contentItemKey") as HTMLInputElement).value;
         // const params = new HttpParams()
         // .set('contentKey', ck)
         // .set('contentItemKey',cik);
@@ -84,7 +84,7 @@ class AppComponent {
     getLoggedInUserInfo() {
         const url = `api/party/${this.loggedInPartyId}`;
         console.log(url);
-        this.httpClient.get(url, { params: {} }).subscribe((data) => {
+        this.http.get(url, { params: {} }).subscribe((data) => {
             console.log(data);
         });
     }
