@@ -97,7 +97,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         this.settings = settings;
         this.http = http;
-        this.title = ' Hussein!';
+        this.title = ' Hussein Calling API!';
       } // Using commonService
 
 
