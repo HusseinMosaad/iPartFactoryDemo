@@ -145,6 +145,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         key: "getLoggedInUserInfo",
         value: function getLoggedInUserInfo() {
           var url = "api/party/".concat(this.loggedInPartyId);
+          console.log(url);
           this.httpClient.get(url, {
             params: {}
           }).subscribe(function (data) {

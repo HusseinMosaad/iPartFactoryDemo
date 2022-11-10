@@ -83,6 +83,7 @@ class AppComponent {
     }
     getLoggedInUserInfo() {
         const url = `api/party/${this.loggedInPartyId}`;
+        console.log(url);
         this.httpClient.get(url, { params: {} }).subscribe((data) => {
             console.log(data);
         });
