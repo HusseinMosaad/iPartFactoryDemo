@@ -97,7 +97,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         this.settings = settings;
         this.http = http;
-        this.title = ' Hussein Calling API!';
+        this.title = ' Hussein Calling API Party!';
       } // Using commonService
 
 
@@ -122,7 +122,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           // .set('contentItemKey',cik);
           var limit = "1";
           var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('limit', limit);
-          this.http.get("api/user", {
+          this.http.get("api/party", {
             params: {}
           }).subscribe(function (data) {
             console.log(JSON.stringify(data));

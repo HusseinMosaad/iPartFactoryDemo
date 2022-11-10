@@ -47,7 +47,7 @@ class AppComponent {
     constructor(settings, http) {
         this.settings = settings;
         this.http = http;
-        this.title = ' Hussein Calling API!';
+        this.title = ' Hussein Calling API Party!';
     }
     // Using commonService
     ngOnInit() {
@@ -66,7 +66,7 @@ class AppComponent {
         const limit = "1";
         const params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]()
             .set('limit', limit);
-        this.http.get("api/user", { params: {} }).subscribe((data) => {
+        this.http.get("api/party", { params: {} }).subscribe((data) => {
             console.log(JSON.stringify(data));
             console.log(data);
         });
