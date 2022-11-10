@@ -160,6 +160,21 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             console.log(data);
           });
         }
+      }, {
+        key: "getUserDataServer",
+        value: function getUserDataServer() {
+          var _this3 = this;
+
+          var domain = window.location.href;
+          var url = "https://openwater-os.secure-platform.com/ipartfactory/userdata";
+          var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('instanceUrl', domain).set('loggedInUserId', this.loggedInPartyId).set('token', this.context.authToken);
+          this.httpClient.get(url, {
+            params: params
+          }).subscribe(function (data) {
+            _this3.loggedInUserDataServer = data;
+            console.log(data);
+          });
+        }
       }]);
 
       return AppComponent;
@@ -172,8 +187,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: AppComponent,
       selectors: [["app-root"]],
-      decls: 15,
-      vars: 8,
+      decls: 20,
+      vars: 11,
       consts: [[2, "text-align", "center"], [3, "ngModel", "ngModelChange"], ["type", "button", "value", "Get IQA Result", 3, "click"]],
       template: function AppComponent_Template(rf, ctx) {
         if (rf & 1) {
@@ -189,7 +204,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "Strong");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Current User");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Current User Client");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
@@ -201,33 +216,47 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "strong");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "Strong");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Search Users");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, "Current User Server");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "input", 1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "pre");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function AppComponent_Template_input_ngModelChange_10_listener($event) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](12, "json");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](13, "strong");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](14, "Search Users");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "input", 1);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function AppComponent_Template_input_ngModelChange_15_listener($event) {
             return ctx.query = $event;
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "input", 2);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "input", 2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AppComponent_Template_input_click_11_listener() {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AppComponent_Template_input_click_16_listener() {
             return ctx.getIqaData();
           });
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "pre");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](17, "pre");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](18);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](14, "json");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](19, "json");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         }
@@ -239,7 +268,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](7, 4, ctx.currentUser));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](7, 5, ctx.currentUser));
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](12, 7, ctx.loggedInUserDataServer));
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
@@ -247,7 +280,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](14, 6, ctx.data));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](19, 9, ctx.data));
         }
       },
       directives: [_angular_forms__WEBPACK_IMPORTED_MODULE_4__["DefaultValueAccessor"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgControlStatus"], _angular_forms__WEBPACK_IMPORTED_MODULE_4__["NgModel"]],
@@ -487,14 +520,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _inherits(IpartSettingsService, _advsol_core__WEBPACK);
 
       function IpartSettingsService(http, contentKeys) {
-        var _this3;
+        var _this4;
 
         _classCallCheck(this, IpartSettingsService);
 
-        _this3 = _possibleConstructorReturn(this, _getPrototypeOf(IpartSettingsService).call(this, http));
-        _this3.http = http;
-        _this3.contentKeys = contentKeys;
-        return _this3;
+        _this4 = _possibleConstructorReturn(this, _getPrototypeOf(IpartSettingsService).call(this, http));
+        _this4.http = http;
+        _this4.contentKeys = contentKeys;
+        return _this4;
       }
 
       _createClass(IpartSettingsService, [{
@@ -569,13 +602,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _inherits(ContentItemData, _advsol_core__WEBPACK2);
 
       function ContentItemData() {
-        var _this4;
+        var _this5;
 
         _classCallCheck(this, ContentItemData);
 
-        _this4 = _possibleConstructorReturn(this, _getPrototypeOf(ContentItemData).apply(this, arguments));
-        _this4.$type = 'Asi.Soa.Core.DataContracts.ContentItemData, Asi.Contracts';
-        return _this4;
+        _this5 = _possibleConstructorReturn(this, _getPrototypeOf(ContentItemData).apply(this, arguments));
+        _this5.$type = 'Asi.Soa.Core.DataContracts.ContentItemData, Asi.Contracts';
+        return _this5;
       }
 
       return ContentItemData;
