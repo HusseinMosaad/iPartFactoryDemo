@@ -97,7 +97,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
         this.settings = settings;
         this.http = http;
-        this.title = ' iMIS!';
+        this.title = ' Hussein!';
       } // Using commonService
 
 

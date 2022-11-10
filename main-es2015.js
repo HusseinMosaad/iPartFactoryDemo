@@ -47,7 +47,7 @@ class AppComponent {
     constructor(settings, http) {
         this.settings = settings;
         this.http = http;
-        this.title = ' iMIS!';
+        this.title = ' Hussein!';
     }
     // Using commonService
     ngOnInit() {
