@@ -70,9 +70,10 @@ class AppComponent {
             return;
         }
         const baseUrl = this.context.baseUrl;
+        const domain = window.location.href;
         const url = "https://openwater-os.secure-platform.com/ipartfactory/iqa";
         const params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]()
-            .set('instanceUrl', baseUrl)
+            .set('instanceUrl', domain)
             .set('loggedInUserId', this.loggedInPartyId)
             .set('query', this.query);
         this.httpClient.get(url, { params: params }).subscribe((data) => {

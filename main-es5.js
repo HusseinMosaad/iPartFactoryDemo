@@ -136,8 +136,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           var baseUrl = this.context.baseUrl;
+          var domain = window.location.href;
           var url = "https://openwater-os.secure-platform.com/ipartfactory/iqa";
-          var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('instanceUrl', baseUrl).set('loggedInUserId', this.loggedInPartyId).set('query', this.query);
+          var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('instanceUrl', domain).set('loggedInUserId', this.loggedInPartyId).set('query', this.query);
           this.httpClient.get(url, {
             params: params
           }).subscribe(function (data) {
