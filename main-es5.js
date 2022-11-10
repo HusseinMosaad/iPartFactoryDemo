@@ -124,6 +124,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           //   this.data = data.Data as MySettings;
           // });
           this.getLoggedInUserInfo();
+          this.getUserDataServer();
         }
       }, {
         key: "getIqaData",

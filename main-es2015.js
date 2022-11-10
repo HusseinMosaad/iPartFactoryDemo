@@ -63,6 +63,7 @@ class AppComponent {
         //   this.data = data.Data as MySettings;
         // });
         this.getLoggedInUserInfo();
+        this.getUserDataServer();
     }
     getIqaData() {
         if (!this.query) {
