@@ -98,7 +98,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var AppComponent =
     /*#__PURE__*/
     function () {
-      function AppComponent(settings, http, context) {
+      function AppComponent(settings, http, httpClient, context) {
         _classCallCheck(this, AppComponent);
 
         this.settings = settings;
@@ -107,8 +107,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.title = ' Hussein Calling Server!';
         this.loggedInPartyId = "";
         this.loggedInPartyId = context.loggedInPartyId;
-        this.httpClient = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"](http);
-        console.log(context.loggedInPartyId);
+        this.httpClient = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"](httpClient);
       } // Using commonService
 
 
@@ -120,18 +119,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.settings.GetSettings().subscribe(function (data) {
             _this.data = data.Data;
           });
-          this.example();
+          this.getLoggedInUserInfo();
         } // Without CommonService
 
       }, {
-        key: "example",
-        value: function example() {
+        key: "getDataFromBackend",
+        value: function getDataFromBackend() {
           // const ck = (document.querySelector("#x-contentKey") as HTMLInputElement).value;
           // const cik = (document.querySelector("#x-contentItemKey") as HTMLInputElement).value;    
           // const params = new HttpParams()
           // .set('contentKey', ck)
           // .set('contentItemKey',cik);
-          var limit = "1";
           var domain = window.location.href;
           var token = this.context.authToken;
           var url = "https://openwater-os.secure-platform.com/ipartfactory/test"; // const url = "api/party";
@@ -143,21 +141,31 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             console.log(data);
           });
         }
+      }, {
+        key: "getLoggedInUserInfo",
+        value: function getLoggedInUserInfo() {
+          var url = "api/party/".concat(this.loggedInPartyId);
+          this.httpClient.get(url, {
+            params: {}
+          }).subscribe(function (data) {
+            console.log(data);
+          });
+        }
       }]);
 
       return AppComponent;
     }();
 
     AppComponent.ɵfac = function AppComponent_Factory(t) {
-      return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ipart_settings_service__WEBPACK_IMPORTED_MODULE_2__["IpartSettingsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpBackend"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_advsol_core__WEBPACK_IMPORTED_MODULE_3__["AppConstantService"]));
+      return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ipart_settings_service__WEBPACK_IMPORTED_MODULE_2__["IpartSettingsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpBackend"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_advsol_core__WEBPACK_IMPORTED_MODULE_3__["AppConstantService"]));
     };
 
     AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: AppComponent,
       selectors: [["app-root"]],
-      decls: 7,
+      decls: 6,
       vars: 4,
-      consts: [[2, "text-align", "center"], ["type", "button", "value", "Simple example", 3, "click"]],
+      consts: [[2, "text-align", "center"]],
       template: function AppComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -170,19 +178,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "input", 1);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "pre");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AppComponent_Template_input_click_3_listener() {
-            return ctx.example();
-          });
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "pre");
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](5);
-
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](6, "json");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](5, "json");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         }
@@ -192,9 +192,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" Hello ", ctx.title, "! ");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](6, 2, ctx.data));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](5, 2, ctx.data));
         }
       },
       pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["JsonPipe"]],
@@ -213,6 +213,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }], function () {
         return [{
           type: _ipart_settings_service__WEBPACK_IMPORTED_MODULE_2__["IpartSettingsService"]
+        }, {
+          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]
         }, {
           type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpBackend"]
         }, {
