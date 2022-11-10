@@ -57,12 +57,16 @@ class AppComponent {
     }
     // Without CommonService
     example() {
-        const ck = document.querySelector("#x-contentKey").value;
-        const cik = document.querySelector("#x-contentItemKey").value;
+        // const ck = (document.querySelector("#x-contentKey") as HTMLInputElement).value;
+        // const cik = (document.querySelector("#x-contentItemKey") as HTMLInputElement).value;    
+        // const params = new HttpParams()
+        // .set('contentKey', ck)
+        // .set('contentItemKey',cik);
+        const limit = "1";
         const params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]()
-            .set('contentKey', ck)
-            .set('contentItemKey', cik);
-        this.http.get("api/ContentItem", { params: params }).subscribe((data) => {
+            .set('limit', limit);
+        this.http.get("api/user", { params: params }).subscribe((data) => {
+            alert(data);
             console.log(data);
         });
     }
