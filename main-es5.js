@@ -151,7 +151,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           this.http.get(url, {
             params: {}
           }).subscribe(function (data) {
-            _this2.currentUser = data;
+            var currentUserJson = data;
+            _this2.currentUser.id = currentUserJson.id;
+            _this2.currentUser.name = currentUserJson.name;
+            _this2.currentUser.partyId = currentUserJson.partyId;
             console.log(data);
           });
         }

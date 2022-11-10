@@ -85,7 +85,10 @@ class AppComponent {
         const url = `api/party/${this.loggedInPartyId}`;
         console.log(url);
         this.http.get(url, { params: {} }).subscribe((data) => {
-            this.currentUser = data;
+            var currentUserJson = data;
+            this.currentUser.id = currentUserJson.id;
+            this.currentUser.name = currentUserJson.name;
+            this.currentUser.partyId = currentUserJson.partyId;
             console.log(data);
         });
     }
