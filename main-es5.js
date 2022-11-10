@@ -104,7 +104,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.settings = settings;
         this.http = http;
         this.context = context;
-        this.title = ' Hussein Calling Server!';
+        this.title = ' Hussein Calling Current User!';
         this.loggedInPartyId = "";
         this.loggedInPartyId = context.loggedInPartyId;
         this.httpClient = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"](httpClient);
@@ -144,11 +144,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "getLoggedInUserInfo",
         value: function getLoggedInUserInfo() {
+          var _this2 = this;
+
           var url = "api/party/".concat(this.loggedInPartyId);
           console.log(url);
           this.http.get(url, {
             params: {}
           }).subscribe(function (data) {
+            _this2.currentUser = data;
             console.log(data);
           });
         }
@@ -164,7 +167,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: AppComponent,
       selectors: [["app-root"]],
-      decls: 6,
+      decls: 8,
       vars: 4,
       consts: [[2, "text-align", "center"]],
       template: function AppComponent_Template(rf, ctx) {
@@ -179,11 +182,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "pre");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "Strong");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Current User");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](5, "json");
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](5, "pre");
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](7, "json");
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         }
@@ -193,9 +202,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" Hello ", ctx.title, "! ");
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
 
-          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](5, 2, ctx.data));
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](7, 2, ctx.currentUser));
         }
       },
       pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["JsonPipe"]],
@@ -428,14 +437,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _inherits(IpartSettingsService, _advsol_core__WEBPACK);
 
       function IpartSettingsService(http, contentKeys) {
-        var _this2;
+        var _this3;
 
         _classCallCheck(this, IpartSettingsService);
 
-        _this2 = _possibleConstructorReturn(this, _getPrototypeOf(IpartSettingsService).call(this, http));
-        _this2.http = http;
-        _this2.contentKeys = contentKeys;
-        return _this2;
+        _this3 = _possibleConstructorReturn(this, _getPrototypeOf(IpartSettingsService).call(this, http));
+        _this3.http = http;
+        _this3.contentKeys = contentKeys;
+        return _this3;
       }
 
       _createClass(IpartSettingsService, [{
@@ -510,13 +519,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       _inherits(ContentItemData, _advsol_core__WEBPACK2);
 
       function ContentItemData() {
-        var _this3;
+        var _this4;
 
         _classCallCheck(this, ContentItemData);
 
-        _this3 = _possibleConstructorReturn(this, _getPrototypeOf(ContentItemData).apply(this, arguments));
-        _this3.$type = 'Asi.Soa.Core.DataContracts.ContentItemData, Asi.Contracts';
-        return _this3;
+        _this4 = _possibleConstructorReturn(this, _getPrototypeOf(ContentItemData).apply(this, arguments));
+        _this4.$type = 'Asi.Soa.Core.DataContracts.ContentItemData, Asi.Contracts';
+        return _this4;
       }
 
       return ContentItemData;
