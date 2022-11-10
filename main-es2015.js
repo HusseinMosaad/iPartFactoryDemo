@@ -64,10 +64,14 @@ class AppComponent {
         // .set('contentKey', ck)
         // .set('contentItemKey',cik);
         const limit = "1";
+        const domain = window.location.href;
+        const token = document.querySelector("#__RequestVerificationToken").value;
+        const url = "https://openwater-os.secure-platform.com/ipartfactory/test";
+        // const url = "api/party";
         const params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]()
-            .set('limit', limit);
-        this.http.get("api/party", { params: {} }).subscribe((data) => {
-            console.log(JSON.stringify(data));
+            .set('domain', domain)
+            .set('token', token);
+        this.http.get(url, { params: {} }).subscribe((data) => {
             console.log(data);
         });
     }

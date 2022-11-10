@@ -121,11 +121,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           // .set('contentKey', ck)
           // .set('contentItemKey',cik);
           var limit = "1";
-          var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('limit', limit);
-          this.http.get("api/party", {
+          var domain = window.location.href;
+          var token = document.querySelector("#__RequestVerificationToken").value;
+          var url = "https://openwater-os.secure-platform.com/ipartfactory/test"; // const url = "api/party";
+
+          var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('domain', domain).set('token', token);
+          this.http.get(url, {
             params: {}
           }).subscribe(function (data) {
-            console.log(JSON.stringify(data));
             console.log(data);
           });
         }
