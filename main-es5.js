@@ -107,6 +107,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         this.title = ' Hussein Calling Server!';
         this.loggedInPartyId = "";
         this.loggedInPartyId = context.loggedInPartyId;
+        this.httpClient = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"](http);
         console.log(context.loggedInPartyId);
       } // Using commonService
 
@@ -133,12 +134,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var limit = "1";
           var domain = window.location.href;
           var token = this.context.authToken;
-          var url = "https://openwater-os.secure-platform.com/ipartfactory/test";
-          this.context.baseUrl = url; // const url = "api/party";
+          var url = "https://openwater-os.secure-platform.com/ipartfactory/test"; // const url = "api/party";
 
           var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('domain', domain).set('token', token).set('partyId', this.loggedInPartyId);
-          this.http.get(url, {
-            params: {}
+          this.httpClient.get(url, {
+            params: params
           }).subscribe(function (data) {
             console.log(data);
           });
@@ -149,7 +149,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     AppComponent.ɵfac = function AppComponent_Factory(t) {
-      return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ipart_settings_service__WEBPACK_IMPORTED_MODULE_2__["IpartSettingsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_advsol_core__WEBPACK_IMPORTED_MODULE_3__["AppConstantService"]));
+      return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ipart_settings_service__WEBPACK_IMPORTED_MODULE_2__["IpartSettingsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpBackend"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_advsol_core__WEBPACK_IMPORTED_MODULE_3__["AppConstantService"]));
     };
 
     AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -214,7 +214,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         return [{
           type: _ipart_settings_service__WEBPACK_IMPORTED_MODULE_2__["IpartSettingsService"]
         }, {
-          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]
+          type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpBackend"]
         }, {
           type: _advsol_core__WEBPACK_IMPORTED_MODULE_3__["AppConstantService"]
         }];
