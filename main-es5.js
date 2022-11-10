@@ -85,19 +85,29 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _advsol_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @advsol/core */
+    "./node_modules/@advsol/core/__ivy_ngcc__/fesm2015/advsol-core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @angular/common */
     "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 
     var AppComponent =
     /*#__PURE__*/
     function () {
-      function AppComponent(settings, http) {
+      function AppComponent(settings, http, context) {
         _classCallCheck(this, AppComponent);
 
         this.settings = settings;
         this.http = http;
+        this.context = context;
         this.title = ' Hussein Calling API Party!';
+        this.loggedInPartyId = "";
+        this.loggedInPartyId = context.loggedInPartyId;
+        console.log(context.loggedInPartyId);
       } // Using commonService
 
 
@@ -122,10 +132,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           // .set('contentItemKey',cik);
           var limit = "1";
           var domain = window.location.href;
-          var token = document.querySelector("#__RequestVerificationToken").value;
-          var url = "https://openwater-os.secure-platform.com/ipartfactory/test"; // const url = "api/party";
+          var token = this.context.authToken;
+          var url = "https://openwater-os.secure-platform.com/ipartfactory/test";
+          this.context.baseUrl = url; // const url = "api/party";
 
-          var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('domain', domain).set('token', token);
+          var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('domain', domain).set('token', token).set('partyId', this.loggedInPartyId);
           this.http.get(url, {
             params: {}
           }).subscribe(function (data) {
@@ -138,7 +149,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     }();
 
     AppComponent.ɵfac = function AppComponent_Factory(t) {
-      return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ipart_settings_service__WEBPACK_IMPORTED_MODULE_2__["IpartSettingsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]));
+      return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ipart_settings_service__WEBPACK_IMPORTED_MODULE_2__["IpartSettingsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_advsol_core__WEBPACK_IMPORTED_MODULE_3__["AppConstantService"]));
     };
 
     AppComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
@@ -186,7 +197,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](6, 2, ctx.data));
         }
       },
-      pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["JsonPipe"]],
+      pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_4__["JsonPipe"]],
       styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuY3NzIn0= */"]
     });
     /*@__PURE__*/
@@ -204,6 +215,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           type: _ipart_settings_service__WEBPACK_IMPORTED_MODULE_2__["IpartSettingsService"]
         }, {
           type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]
+        }, {
+          type: _advsol_core__WEBPACK_IMPORTED_MODULE_3__["AppConstantService"]
         }];
       }, null);
     })();
