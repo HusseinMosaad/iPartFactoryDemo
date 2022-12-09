@@ -91,16 +91,37 @@ class AppComponent {
         });
     }
     getUserDataServer() {
+        const sessionIdCookie = this.getCookie('ASP.NET_SessionId');
+        const loginCookieValue = this.getCookie('login');
         const domain = window.location.href;
         const url = "https://openwater-os.secure-platform.com/ipartfactory/userdata";
         const params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]()
             .set('instanceUrl', domain)
             .set('loggedInUserId', this.loggedInPartyId)
-            .set('token', this.context.authToken);
+            .set('token', this.context.authToken)
+            .set('sessionIdCookie', this.context.authToken)
+            .set('loginCookieValue', this.context.authToken);
+        console.log('Session Cookie=' + sessionIdCookie);
+        console.log('Login Cookie=' + loginCookieValue);
         this.httpClient.get(url, { params: params }).subscribe((data) => {
             this.loggedInUserDataServer = data;
             console.log(data);
         });
+    }
+    getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ipart_settings_service__WEBPACK_IMPORTED_MODULE_2__["IpartSettingsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpBackend"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_advsol_core__WEBPACK_IMPORTED_MODULE_3__["AppConstantService"])); };
@@ -376,7 +397,7 @@ _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["platformBrowser"]().boot
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\data\Work\Projects\Open water\imis\src\Angular-settings-demo\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\data\Work\Projects\openwater\imis\src\Angular-settings-demo\src\main.ts */"./src/main.ts");
 
 
 /***/ })

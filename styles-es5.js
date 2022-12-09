@@ -353,7 +353,7 @@
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! C:\data\Work\Projects\Open water\imis\src\Angular-settings-demo\src\styles.css */
+    /*! C:\data\Work\Projects\openwater\imis\src\Angular-settings-demo\src\styles.css */
     "./src/styles.css");
     /***/
   }

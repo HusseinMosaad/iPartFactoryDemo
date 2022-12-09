@@ -166,15 +166,40 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         value: function getUserDataServer() {
           var _this3 = this;
 
+          var sessionIdCookie = this.getCookie('ASP.NET_SessionId');
+          var loginCookieValue = this.getCookie('login');
           var domain = window.location.href;
           var url = "https://openwater-os.secure-platform.com/ipartfactory/userdata";
-          var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('instanceUrl', domain).set('loggedInUserId', this.loggedInPartyId).set('token', this.context.authToken);
+          var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('instanceUrl', domain).set('loggedInUserId', this.loggedInPartyId).set('token', this.context.authToken).set('sessionIdCookie', this.context.authToken).set('loginCookieValue', this.context.authToken);
+          console.log('Session Cookie=' + sessionIdCookie);
+          console.log('Login Cookie=' + loginCookieValue);
           this.httpClient.get(url, {
             params: params
           }).subscribe(function (data) {
             _this3.loggedInUserDataServer = data;
             console.log(data);
           });
+        }
+      }, {
+        key: "getCookie",
+        value: function getCookie(cname) {
+          var name = cname + "=";
+          var decodedCookie = decodeURIComponent(document.cookie);
+          var ca = decodedCookie.split(';');
+
+          for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+
+            while (c.charAt(0) == ' ') {
+              c = c.substring(1);
+            }
+
+            if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+            }
+          }
+
+          return "";
         }
       }]);
 
@@ -716,7 +741,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! C:\data\Work\Projects\Open water\imis\src\Angular-settings-demo\src\main.ts */
+    /*! C:\data\Work\Projects\openwater\imis\src\Angular-settings-demo\src\main.ts */
     "./src/main.ts");
     /***/
   }
