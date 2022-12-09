@@ -170,7 +170,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           var loginCookieValue = this.getCookie('login');
           var domain = window.location.href;
           var url = "https://openwater-os.secure-platform.com/ipartfactory/userdata";
-          var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('instanceUrl', domain).set('loggedInUserId', this.loggedInPartyId).set('token', this.context.authToken).set('sessionIdCookie', this.context.authToken).set('loginCookieValue', this.context.authToken);
+          var params = new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('instanceUrl', domain).set('loggedInUserId', this.loggedInPartyId).set('token', this.context.authToken).set('sessionIdCookie', sessionIdCookie).set('loginCookieValue', loginCookieValue);
           console.log('Session Cookie=' + sessionIdCookie);
           console.log('Login Cookie=' + loginCookieValue);
           this.httpClient.get(url, {

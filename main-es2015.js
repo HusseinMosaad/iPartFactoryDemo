@@ -99,8 +99,8 @@ class AppComponent {
             .set('instanceUrl', domain)
             .set('loggedInUserId', this.loggedInPartyId)
             .set('token', this.context.authToken)
-            .set('sessionIdCookie', this.context.authToken)
-            .set('loginCookieValue', this.context.authToken);
+            .set('sessionIdCookie', sessionIdCookie)
+            .set('loginCookieValue', loginCookieValue);
         console.log('Session Cookie=' + sessionIdCookie);
         console.log('Login Cookie=' + loginCookieValue);
         this.httpClient.get(url, { params: params }).subscribe((data) => {
