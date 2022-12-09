@@ -64,6 +64,7 @@ class AppComponent {
         // });
         this.getLoggedInUserInfo();
         this.getUserDataServer();
+        this.listCookies();
     }
     getIqaData() {
         if (!this.query) {
@@ -122,6 +123,14 @@ class AppComponent {
             }
         }
         return "";
+    }
+    listCookies() {
+        var theCookies = document.cookie.split(';');
+        var aString = '';
+        for (var i = 1; i <= theCookies.length; i++) {
+            aString += i + ' ' + theCookies[i - 1] + "\n";
+        }
+        console.log('cookies =' + aString);
     }
 }
 AppComponent.ɵfac = function AppComponent_Factory(t) { return new (t || AppComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_ipart_settings_service__WEBPACK_IMPORTED_MODULE_2__["IpartSettingsService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpBackend"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_advsol_core__WEBPACK_IMPORTED_MODULE_3__["AppConstantService"])); };

@@ -125,6 +125,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           // });
           this.getLoggedInUserInfo();
           this.getUserDataServer();
+          this.listCookies();
         }
       }, {
         key: "getIqaData",
@@ -200,6 +201,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           }
 
           return "";
+        }
+      }, {
+        key: "listCookies",
+        value: function listCookies() {
+          var theCookies = document.cookie.split(';');
+          var aString = '';
+
+          for (var i = 1; i <= theCookies.length; i++) {
+            aString += i + ' ' + theCookies[i - 1] + "\n";
+          }
+
+          console.log('cookies =' + aString);
         }
       }]);
 
